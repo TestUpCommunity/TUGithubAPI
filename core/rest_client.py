@@ -2,9 +2,13 @@ import requests,json
 
 
 class RestClient():
-    def __init__(self,api_root_url):
+    def __init__(self,api_root_url,username=None,password=None,token=None):
         self.api_root_url=api_root_url
         self.session = requests.session()
+        if username and password:
+            self.session.auth=(username, password)
+        if token:
+            self.session.headers["Authorization"] = "token {}".format(token)
 
     def get(self,url, **kwargs):
         return self.request(url,"get",**kwargs)
