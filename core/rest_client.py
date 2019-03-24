@@ -7,7 +7,7 @@ class RestClient():
         self.session = requests.session()
         if username and password:
             self.session.auth=(username, password)
-        if token:
+        elif token:
             self.session.headers["Authorization"] = "token {}".format(token)
 
     def get(self,url, **kwargs):
