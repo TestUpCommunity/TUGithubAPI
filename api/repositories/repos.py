@@ -18,15 +18,15 @@ class Repos(RestClient):
         """
         return self.get("/users/{}/repos".format(username), **kwargs)
 
-    def list_organization_repos(self,org,**kwargs):
+    def list_organization_repos(self, org, **kwargs):
         """
         https://developer.github.com/v3/repos/#list-organization-repositories
         :param org: orgnization name
         """
-        return self.get("/orgs/{}/repos".format(org),**kwargs)
+        return self.get("/orgs/{}/repos".format(org), **kwargs)
 
-    def list_all_public_repos(self,**kwargs):
+    def list_all_public_repos(self, **kwargs):
         """
         https://developer.github.com/v3/repos/#list-all-public-repositories
         """
-        return self.get("/repositories",**kwargs)
+        return self.get("/repositories", **kwargs)

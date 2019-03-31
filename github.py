@@ -12,17 +12,16 @@ if __name__ == '__main__':
     x = r.repos.list_your_repos()
     print(x.text)
 
-
-    data={"direction": "desc"}
-    x = r.repos.list_user_repos("zhangting85",params=data)
+    data = {"direction": "desc"}
+    x = r.repos.list_user_repos("zhangting85", params=data)
     print(x.text)
 
-    x=r.repos.list_organization_repos("TestUpCommunity")
+    x = r.repos.list_organization_repos("TestUpCommunity")
     print(x.text)
 
-    x=r.repos.list_all_public_repos()
+    x = r.repos.list_all_public_repos()
     print(x.text)
 
     data = {"since": "364"}
-    x=r.repos.list_all_public_repos(params=data)
+    x = r.repos.list_all_public_repos(params=data)
     print(x.text)
