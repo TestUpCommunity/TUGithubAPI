@@ -8,8 +8,7 @@ class Github():
 
 
 if __name__ == '__main__':
-    r = Github(token="07607a522b689499d405e29ee90218bb604c7b11")
-    # r = Github(token="xxxxxxxxxxx")
+    r = Github(token="xxxxxxxxxxx")
     x = r.repos.list_your_repos()
     print(x.text)
 
