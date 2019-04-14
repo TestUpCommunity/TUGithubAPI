@@ -30,3 +30,27 @@ class Repos(RestClient):
         https://developer.github.com/v3/repos/#list-all-public-repositories
         """
         return self.get("/repositories", **kwargs)
+
+    def create_user_repo(self, **kwargs):
+        """
+        https://developer.github.com/v3/repos/#create
+        """
+        return self.post("/user/repos", **kwargs)
+
+    def create_organization_repo(self, org, **kwargs):
+        """
+        https://developer.github.com/v3/repos/#create
+        """
+        return self.post("/orgs/{}/repos".format(org), **kwargs)
+
+    def get_repo(self, owner, repo, **kwargs):
+        """
+        https://developer.github.com/v3/repos/#get
+        """
+        return self.get("/repos/{}/{}".format(owner, repo), **kwargs)
+
+    def edit_repo(self, owner, repo, **kwargs):
+        """
+        https://developer.github.com/v3/repos/#edit
+        """
+        return self.patch("/repos/{}/{}".format(owner, repo), **kwargs)
