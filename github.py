@@ -8,7 +8,7 @@ class Github():
 
 
 if __name__ == '__main__':
-    r = Github(token="b5d180d29ae65f289b8f8b6ac7680675c921179e")
+    r = Github(token="xxxxx")
     username = "zhangting85"
     orgnname = "xxxx"
 
