@@ -47,7 +47,6 @@ if __name__ == '__main__':
         "has_projects": True,
         "has_wiki": True
     }
-    import json
 
     x = r.repos.edit_repo(username, "Hello-World", json=data)
     print(x.status_code)
