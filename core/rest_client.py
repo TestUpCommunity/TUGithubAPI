@@ -51,8 +51,3 @@ class RestClient():
         if method_name == "delete":
             return self.session.delete(url, **kwargs)
 
-
-if __name__ == '__main__':
-    r = RestClient("http://httpbin.org")
-    x = r.post("/post", json={"a": "b"})
-    print(x.text)
