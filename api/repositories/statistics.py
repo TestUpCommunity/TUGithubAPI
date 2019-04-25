@@ -32,4 +32,4 @@ class Statistics(RestClient):
         """
         https://developer.github.com/v3/repos/statistics/#get-the-number-of-commits-per-hour-in-each-day
         """
-        self.get("/repos/{}/{}/stats/punch_card".format(owner,repo),**kwargs)
+        return self.get("/repos/{}/{}/stats/punch_card".format(owner,repo),**kwargs)
