@@ -9,7 +9,7 @@ class Github():
         self.issues = Issues(self.api_root_url, **kwargs)
 
 if __name__ == '__main__':
-    r = Github(token="4ac1fe4a00f7605c700dc23e020a9be57173706f")
+    r = Github(token="xxxx")
     username = "zhangting85"
     orgname = "TestUpCommunity"
     reponame ="simpleWebtest"
