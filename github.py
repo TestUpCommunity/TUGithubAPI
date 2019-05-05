@@ -1,4 +1,5 @@
 from api.repositories.repos import Repos
+from api.repositories.traffic import Traffic
 from api.issues.issues import Issues
 
 
@@ -7,3 +8,4 @@ class Github():
         self.api_root_url = "https://api.github.com"
         self.repos = Repos(self.api_root_url, **kwargs)
         self.issues = Issues(self.api_root_url, **kwargs)
+        self.traffic = Traffic(self.api_root_url, **kwargs)
