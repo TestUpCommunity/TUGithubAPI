@@ -1,5 +1,4 @@
 from api.repositories.repos import Repos
-from api.repositories.traffic import Traffic
 from api.issues.issues import Issues
 
 
@@ -8,4 +7,17 @@ class Github():
         self.api_root_url = "https://api.github.com"
         self.repos = Repos(self.api_root_url, **kwargs)
         self.issues = Issues(self.api_root_url, **kwargs)
-        self.traffic = Traffic(self.api_root_url, **kwargs)
+
+if __name__ == '__main__':
+    r = Github(token="4ac1fe4a00f7605c700dc23e020a9be57173706f")
+    username = "zhangting85"
+    orgname = "TestUpCommunity"
+    reponame ="simpleWebtest"
+    # case 1
+    x = r.repos.get_repo(username, reponame)
+    print(x.status_code)
+    assert x.status_code == 200
+    print(x.text)
+    x = r.repos.traffic.list_clones(username, reponame)
+    assert x.status_code == 200
+    print(x.text)
