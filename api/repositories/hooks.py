@@ -18,6 +18,19 @@ class Hooks(RestClient):
 
     def delete_a_hook(self, owner, repo, hook_id):
         """
-        https: // developer.github.com / v3 / repos / hooks /  # delete-a-hook
+        https://developer.github.com/v3/repos/hooks/#delete-a-hook
         """
         return self.delete_a_hook("/repos/{}/{}/hooks/{}".format(owner, repo, hook_id))
+
+    def test_a_push_hook(self, owner, repo, hook_id):
+        """
+        https://developer.github.com/v3/repos/hooks/#test-a-push-hook
+        """
+        return self.post(("/repos/{}/{}/hooks/{}/test".format(owner, repo, hook_id)))
+
+    def ping_a_hook(self, owner, repo, hook_id):
+        """
+        https://developer.github.com/v3/repos/hooks/#ping-a-hook
+        """
+        return self.post(("/repos/{}/{}/hooks/{}/pings".format(owner, repo, hook_id)))
+
