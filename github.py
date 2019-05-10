@@ -1,5 +1,6 @@
 from api.repositories.repos import Repos
 from api.issues.issues import Issues
+from api.hooks.hooks import Hooks
 
 
 class Github():
@@ -7,9 +8,10 @@ class Github():
         self.api_root_url = "https://api.github.com"
         self.repos = Repos(self.api_root_url, **kwargs)
         self.issues = Issues(self.api_root_url, **kwargs)
+        self.hooks = Hooks(self.api_root_url, **kwargs)
 
 if __name__ == '__main__':
-    r = Github(token="xxxx")
+    r = Github(token="xxx")
     username = "zhangting85"
     orgname = "TestUpCommunity"
     reponame ="simpleWebtest"
@@ -21,3 +23,4 @@ if __name__ == '__main__':
     x = r.repos.traffic.list_clones(username, reponame)
     assert x.status_code == 200
     print(x.text)
+
