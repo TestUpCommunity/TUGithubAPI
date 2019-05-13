@@ -21,4 +21,3 @@ if __name__ == '__main__':
     x = r.repos.traffic.list_clones(username, reponame)
     assert x.status_code == 200
     print(x.text)
-    
