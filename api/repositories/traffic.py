@@ -2,8 +2,6 @@ from core.rest_client import RestClient
 
 
 class Traffic(RestClient):
-    def __init__(self, api_root_url, **kwargs):
-        super(Traffic, self).__init__(api_root_url, **kwargs)
 
     def list_referrers(self, owner, repo, **kwargs):
         """
@@ -30,4 +28,3 @@ class Traffic(RestClient):
         :param kwargs: day,week
         """
         return self.get("/repos/{}/{}/traffic/clones".format(owner, repo), **kwargs)
-
