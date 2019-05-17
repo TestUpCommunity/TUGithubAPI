@@ -50,4 +50,3 @@ class RestClient():
             return self.session.patch(url, data, **kwargs)
         if method_name == "delete":
             return self.session.delete(url, **kwargs)
-

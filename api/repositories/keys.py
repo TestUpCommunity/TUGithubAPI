@@ -2,9 +2,6 @@ from core.rest_client import RestClient
 
 
 class Keys(RestClient):
-    def __init__(self, api_root_url, **kwargs):
-        super(Keys, self).__init__(api_root_url,**kwargs)
-
     def List_deploy_keys(self,owner,repo,**kwargs):
         """
         https://developer.github.com/v3/repos/keys/#list-deploy-keys
