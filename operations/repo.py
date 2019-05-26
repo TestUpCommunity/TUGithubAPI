@@ -26,7 +26,6 @@ def create_repo(github, name, org=None, description=None, homepage=None, private
         "has_projects": has_projects,
         "has_wiki": has_wiki
     }
-    result = CommonItem()
     result.success = False
     if org:
         response = github.repos.create_organization_repo(org=org, json=payload)
