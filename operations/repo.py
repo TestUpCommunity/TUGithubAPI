@@ -1,8 +1,8 @@
 from core.base import CommonItem
 
 
-def create_a_repo(github, name, org=None, description=None, homepage=None, private=False, has_issues=True,
-                  has_projects=True, has_wiki=True):
+def create_repo(github, name, org=None, description=None, homepage=None, private=False, has_issues=True,
+                has_projects=True, has_wiki=True):
     """
 
     :param github: github 对象
