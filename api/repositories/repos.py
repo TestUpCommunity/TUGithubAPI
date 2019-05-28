@@ -5,6 +5,7 @@ from api.repositories.statistics import Statistics
 from api.repositories.statuses import Statuses
 from api.repositories.hooks import Hooks
 from api.repositories.branches import Branches
+from api.repositories.pages import Pages
 
 class Repos(RestClient):
     def __init__(self, api_root_url, **kwargs):
@@ -15,6 +16,7 @@ class Repos(RestClient):
         self.statuses = Statuses(self.api_root_url, **kwargs)
         self.hooks = Hooks(self.api_root_url, **kwargs)
         self.branches = Branches(self.api_root_url, **kwargs)
+        self.pages = Pages(self.api_root_url, **kwargs)
 
     def list_your_repos(self, **kwargs):
         """
