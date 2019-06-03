@@ -2,7 +2,7 @@ import requests
 import json as json_parser
 
 
-class RestClient(object):
+class RestClient():
     def __init__(self, api_root_url, username=None, password=None, token=None):
         self.api_root_url = api_root_url
         self.session = requests.session()
