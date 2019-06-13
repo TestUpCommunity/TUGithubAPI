@@ -1,6 +1,6 @@
 from core.rest_client import RestClient
 
-class repositories(RestClient):
+class Repositories(RestClient):
 
     def replace_all_topics_for_a_repository(self, owner, repo, **kwargs):
         """
@@ -40,7 +40,7 @@ class repositories(RestClient):
         headers = {'Accept':'application/vnd.github.nightshade-preview+json'}
         return self.delete('/repos/{}/{}/transfer'.format(owner, repo), headers = headers ,**kwargs)
 
-    
+
 
 
 
