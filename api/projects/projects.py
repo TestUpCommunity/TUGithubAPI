@@ -1,13 +1,14 @@
 from core.rest_client import RestClient
 from api.projects.cards import Cards
 from api.projects.columns import Columns
-
+from api.projects.collaborators import Collaborators
 
 class Projects(RestClient):
     def __int__(self, api_root_url, **kwargs):
         super(Projects, self).__init__(api_root_url, **kwargs)
         self.cards = Cards(self.api_root_url, **kwargs)
         self.columns = Columns(self.api_root_url, **kwargs)
+        self.collaborators = Collaborators(self.api_root_url, **kwargs)
 
     def list_repository_projects(self, owner, repo, **kwargs):
         """
