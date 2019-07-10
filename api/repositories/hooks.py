@@ -38,3 +38,9 @@ class Hooks(RestClient):
         https://developer.github.com/v3/repos/hooks#list-hooks
         """
         return self.get("/repos/{}/{}/hooks".format(owner, repo), **kwargs)
+
+    def pubSubHubbub(self, owner, repo, event, **kwargs):
+        """
+        https://developer.github.com/v3/repos/hooks/#pubsubhubbub
+        """
+        return self.post("/repos/{}/{}/events/{}".format(owner, repo, event), **kwargs)
