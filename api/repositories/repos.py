@@ -9,6 +9,8 @@ from api.repositories.pages import Pages
 from api.repositories.repositories import Repositories
 from api.repositories.comments import Comments
 from api.repositories.commits import Commits
+from api.repositories.invitations import Invitations
+from api.repositories.contents import Contents
 
 class Repos(RestClient):
     def __init__(self, api_root_url, **kwargs):
@@ -23,6 +25,8 @@ class Repos(RestClient):
         self.repositories = Repositories(self.api_root_url, **kwargs )
         self.comments = Comments(self.api_root_url, **kwargs )
         self.commits = Commits(self.api_root_url, **kwargs )
+        self.invitations = Invitations(self.api_root_url, **kwargs )
+        self.contents = Contents(self.api_root_url, **kwargs )
 
     def list_your_repos(self, **kwargs):
         """
