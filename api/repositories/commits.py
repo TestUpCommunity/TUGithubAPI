@@ -2,7 +2,7 @@ from core.rest_client import RestClient
 
 class Commits(RestClient):
 
-    def list_commits_on_repository(self, owner, repo, **kwargs):
+    def list_commits_on_a_repository(self, owner, repo, **kwargs):
         """
         https://developer.github.com/v3/repos/commits/#list-commits-on-a-repository
         """
