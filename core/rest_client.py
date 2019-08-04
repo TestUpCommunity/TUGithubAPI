@@ -1,0 +1,62 @@
+import requests
+import json as  json_parser
+
+class RestClient():
+    def __init__(self, api_root_url, username=None, password=None, token=None):
+        self.api_root_url = api_root_url
+        self.session = requests.session()
+        if username and password:
+            self.session.auth = (username, password)
+        if token:
+            self.session.headers['Authorization'] = 'token %s' %(token)
+        if username and password and token:
+            self.session.headers['Authorization'] = 'token %s' %(token)
+
+    def get(self, url, **kwargs):
+        return self.request(url, 'get', **kwargs)
+
+    def post(self, url, data=None, json=None, **kwargs):
+        return self.request(url, 'post', data, json, **kwargs)
+
+    def options(self, url, **kwargs):
+        return self.request(url, 'options', **kwargs)
+
+    def head(self, url, **kwargs):
+        return self.request(url, 'head', **kwargs)
+
+    def put(self, url, data=None, **kwargs):
+        return self.request(url, 'put', data, **kwargs)
+
+    def patch(self, url, data=None, **kwargs):
+        return self.request(url, 'patch', data, **kwargs)
+
+    def delete(self, url, **kwargs):
+        return self.request(url, 'delete', **kwargs)
+
+    def request(self, url, method_name, data=None, json=None, **kwargs):
+        url = self.api_root_url + url
+        if method_name == 'get':
+            return self.session.get(url, **kwargs)
+        if method_name == 'post':
+            return self.session.post(url, data, json, **kwargs)
+        if method_name == 'options':
+            return self.session.options(url, **kwargs)
+        if method_name == 'head':
+            return self.session.head(self, url, **kwargs)
+        if method_name == 'put':
+            return self.session.put(self, url, data, **kwargs)
+        if method_name == 'patch':
+            if json:
+                data = json_parser.dumps(json)
+            return self.session.patch(self, url, data, **kwargs)
+        if method_name == 'delete':
+            return self.session.delete(self, url, **kwargs)
+
+#实例化
+if __name__ == '__main__':
+    r = RestClient('https://httpbin.org')
+    x = r.post('/post', json={'a':'b'})
+    print(x.text)
+    #
+    # a = r.get('/get')
+    # print(a.text)
