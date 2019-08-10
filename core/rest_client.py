@@ -35,19 +35,35 @@ class RestClient():
     def request(self, url, method_name, data=None, json=None, **kwargs):
         url = self.api_root_url + url
         if method_name == "get":
-            return self.session.get(url, **kwargs)
+            return process(self.session.get(url, **kwargs))
         if method_name == "post":
-            return self.session.post(url, data, json, **kwargs)
+            return process(self.session.post(url, data, json, **kwargs))
         if method_name == "options":
-            return self.session.options(url, **kwargs)
+            return process(self.session.options(url, **kwargs))
         if method_name == "head":
-            return self.session.head(url, **kwargs)
+            return process(self.session.head(url, **kwargs))
         if method_name == "put":
-            return self.session.put(url, data, **kwargs)
+            return process(self.session.put(url, data, **kwargs))
         if method_name == "patch":
             if json:
                 data = json_parser.dumps(json)
-            return self.session.patch(url, data, **kwargs)
+            return process(self.session.patch(url, data, **kwargs))
         if method_name == "delete":
-            return self.session.delete(url, **kwargs)
+            return process(self.session.delete(url, **kwargs))
 
+
+def process(raw_response):
+    response=Response()
+    response.raw=raw_response
+    response.status_code=raw_response.status_code
+    try:
+        response.content=raw_response.json()
+    except:
+        response.content=raw_response.content
+    return response
+
+class Response():
+    def __init__(self):
+        self.status_code=None
+        self.content=None
+        self.raw=None
