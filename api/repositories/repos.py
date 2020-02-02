@@ -7,6 +7,13 @@ from api.repositories.hooks import Hooks
 from api.repositories.branches import Branches
 from api.repositories.pages import Pages
 from api.repositories.repositories import Repositories
+from api.repositories.comments import Comments
+from api.repositories.commits import Commits
+from api.repositories.invitations import Invitations
+from api.repositories.contents import Contents
+from api.repositories.deployments import Deployments
+from api.repositories.downloads import Downloads
+
 
 class Repos(RestClient):
     def __init__(self, api_root_url, **kwargs):
@@ -19,6 +26,13 @@ class Repos(RestClient):
         self.branches = Branches(self.api_root_url, **kwargs)
         self.pages = Pages(self.api_root_url, **kwargs)
         self.repositories = Repositories(self.api_root_url, **kwargs )
+        self.comments = Comments(self.api_root_url, **kwargs )
+        self.commits = Commits(self.api_root_url, **kwargs )
+        self.invitations = Invitations(self.api_root_url, **kwargs )
+        self.contents = Contents(self.api_root_url, **kwargs )
+        self.deployments = Deployments(self.api_root_url, **kwargs )
+        self.downloads = Downloads(self.api_root_url, **kwargs )
+
 
     def list_your_repos(self, **kwargs):
         """
