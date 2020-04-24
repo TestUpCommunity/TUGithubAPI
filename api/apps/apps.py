@@ -11,9 +11,7 @@ class Apps(RestClient):
     def get_a_user_installation(self, username, **kwargs):
         """
         https://developer.github.com/v3/apps/#get-a-user-installation
-        :param username:
-        :param kwargs:
-        :return:
+
         """
         header = {"Accept": "application/vnd.github.machine-man-preview+json"}
         return self.get("/users/{}/installation".format(username), headers=header, **kwargs)
@@ -21,9 +19,7 @@ class Apps(RestClient):
     def create_a_gitHub_app_from_a_manifest(self, code, **kwargs):
         """
         https://developer.github.com/v3/apps/#create-a-github-app-from-a-manifest
-        :param code:
-        :param kwargs:
-        :return:
+
         """
         return self.post("/app-manifests/{}/conversions".format(code), **kwargs)
 

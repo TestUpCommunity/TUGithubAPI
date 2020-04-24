@@ -10,5 +10,5 @@ class Github():
         self.repos = Repos(self.api_root_url, **kwargs)
         self.issues = Issues(self.api_root_url, **kwargs)
         self.checks = Checks(self.api_root_url, **kwargs)
-        self.apps = Apps(self.api_root_url, **kwargs)
+        self.apps = Apps(self.api_root_url,**kwargs)
 
