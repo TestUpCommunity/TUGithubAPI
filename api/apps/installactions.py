@@ -8,8 +8,8 @@ class Installation(RestClient):
         :param kwargs:
         :return:
         """
-        header = {'Accept': 'application/vnd.github.machine-man-preview+json'}
-        return self.get("/installation/repositories", headers=header, **kwargs)
+        headers = {'Accept': 'application/vnd.github.machine-man-preview+json'}
+        return self.get("/installation/repositories", headers=headers, **kwargs)
 
     def list_installations_for_a_user(self, **kwargs):
         """
@@ -17,5 +17,5 @@ class Installation(RestClient):
         :param kwargs:
         :return:
         """
-        header = {'Accept': 'application/vnd.github.machine-man-preview+json'}
-        return self.get("/user/installations", headers=header, **kwargs)
+        headers = {'Accept': 'application/vnd.github.machine-man-preview+json'}
+        return self.get("/user/installations", headers=headers, **kwargs)

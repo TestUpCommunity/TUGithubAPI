@@ -17,5 +17,5 @@ class Apps(RestClient):
         """
         https://developer.github.com/v3/apps/#get-a-user-installation
         """
-        header = {'Accept': 'application/vnd.github.machine-man-preview+json'}
-        return self.get("/users/{}/installation".format(username), **kwargs)
+        headers = {'Accept': 'application/vnd.github.machine-man-preview+json'}
+        return self.get("/users/{}/installation".format(username), headers=headers, **kwargs)
