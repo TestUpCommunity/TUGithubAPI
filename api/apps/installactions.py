@@ -19,3 +19,11 @@ class Installation(RestClient):
         """
         headers = {'Accept': 'application/vnd.github.machine-man-preview+json'}
         return self.get("/user/installations", headers=headers, **kwargs)
+
+    def add_repository_to_installation(self, installation_id, repository_id, **kwargs):
+        """
+        https://developer.github.com/v3/apps/installations/#add-repository-to-installation
+        """
+        headers = {'Accept': 'application/vnd.github.machine-man-preview+json'}
+        return self.put("/user/installations/{}/repositories/{}".format(installation_id, repository_id), headers = headers, **kwargs)
+
