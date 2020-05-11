@@ -20,6 +20,10 @@ class Orgs(RestClient):
         """
         return self.delete('/orgs/{}/credential-authorizations/{}'.format(org,credential_id),**kwargs)
 
-
+    def get_on_organization(self, org, **kwargs):
+        """
+        https://developer.github.com/v3/orgs/#get-an-organization
+        """
+        return self.get('/orgs/{}'.format(org), **kwargs)
 
 
