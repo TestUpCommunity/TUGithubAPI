@@ -26,4 +26,10 @@ class Orgs(RestClient):
         """
         return self.get('/orgs/{}'.format(org), **kwargs)
 
+    def list_your_organizations(self, **kwargs):
+        """
+        https://developer.github.com/v3/orgs/#list-your-organizations
+        """
+        return self.get('/user/orgs' ,**kwargs)
+
 

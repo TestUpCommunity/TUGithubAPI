@@ -3,6 +3,9 @@ from api.issues.issues import Issues
 from api.checks.checks import Checks
 from api.interactions.interactions import Interactions
 from api.apps.apps import Apps
+from api.orgs.orgs import Orgs
+from operations.orgs import create_org_and_repo
+
 
 class Github():
     def __init__(self, **kwargs):
@@ -12,4 +15,6 @@ class Github():
         self.checks = Checks(self.api_root_url, **kwargs)
         self.interactions = Interactions(self.api_root_url, **kwargs)
         self.apps = Apps(self.api_root_url, **kwargs)
+        self.orgs = Orgs(self.api_root_url, **kwargs)
+
 
