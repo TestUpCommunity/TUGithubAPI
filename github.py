@@ -5,7 +5,7 @@ from api.interactions.interactions import Interactions
 from api.apps.apps import Apps
 from api.orgs.orgs import Orgs
 from operations.orgs import create_org_and_repo
-import json
+from operations.repo import delete_repo_from_user_by_name
 
 
 class Github():
@@ -23,16 +23,7 @@ class Github():
 if __name__ == '__main__':
     g = Github(username="namelaowang", password ="ghl6032069")
 
-    result =g.repos.list_user_repos("namelaowang" ,json={'type':'all'})
-    r = result.json()
-    print(r)
-    for i in r:
-        print(i['name'])
-
-    print("---------")
-
-    # result = g.repos.delete_a_repo('namelaowang','repos')
-    # print(result.status_code)
+    print(delete_repo_from_user_by_name(g, 'namelaowang', 'repos'))
 
 
 

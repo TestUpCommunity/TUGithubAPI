@@ -24,8 +24,7 @@ class Orgs(RestClient):
         """
         https://developer.github.com/v3/orgs/#get-an-organization
         """
-        headers = {'Accept':'application/vnd.github.surtur-preview+json'}
-        return self.get('/orgs/{}'.format(org), headers=headers ,**kwargs)
+        return self.get('/orgs/{}'.format(org), **kwargs)
 
     def list_your_organizations(self, **kwargs):
         """

@@ -1,6 +1,7 @@
 from core.base import CommonItem
 import json
 
+
 def create_repo(github, name, org=None, description=None, homepage=None, private=False, has_issues=True,
                 has_projects=True, has_wiki=True):
     """
@@ -42,31 +43,42 @@ def create_repo(github, name, org=None, description=None, homepage=None, private
 def delete_repo_from_user_by_name(github, owner, repo):
     """
 
-    @param github: Github创建出来github对象
-    @param owner: 当前登陆的用户
-    @param repo: 要删除的repo关键字
+    :param github: Github创建出来github对象
+    :param owner: 当前登陆的用户
+    :param repo: 要删除的repo关键字
 
     """
+    import re
+    delete_list = []
     result = CommonItem()
     result.success = False
 
     paylod = {'try': 'all'}
-
+    # 列出当前用户的所有repos
     response = github.repos.list_user_repos(username=owner, json=paylod)
-    r = response.json()
-
     if response.status_code == 200:
 
-        response = github.repos.delete_a_repo(owner=owner, repo=repo)
+        r = response.json()
 
-        if response.status_code == 204:
-            result.success = True
-        else:
-            result.error = "create repo got {},should be 201".format(str(response.status_code))
+        for i in r:
+            # 从该账户的所有repos中，匹配出所有带有"repo"关键字的repos
+            restring = re.match('.*{}.*'.format(repo), i['name'])
+
+            if restring == None:
+                continue
+            delete_list.append(restring.group())
+
+        for delete_repo in delete_list:
+            response = github.repos.delete_a_repo(owner=owner, repo=delete_repo)
+
+            if response.status_code == 204:
+                result.success = True
+            else:
+                result.error = "delete repo got {},should be 204".format(str(response.status_code))
 
         return result
 
-    return '列出repos失败'
+    return ['list the repos fail','https://developer.github.com/v3/repos/#list-user-repositories']
 
 
 
