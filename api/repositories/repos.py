@@ -83,3 +83,9 @@ class Repos(RestClient):
         https://developer.github.com/v3/repos/#edit
         """
         return self.patch("/repos/{}/{}".format(owner, repo), **kwargs)
+
+    def delete_a_repo(self, owner,repo, **kwargs):
+        """
+        https://developer.github.com/v3/repos/#delete-a-repository
+        """
+        return self.delete('/repos/{}/{}'.format(owner,repo), **kwargs)

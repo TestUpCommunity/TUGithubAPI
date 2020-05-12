@@ -16,7 +16,7 @@ def create_org_and_repo(github, org, name, description=None, private=None, has_i
        """
     result = CommonItem()
     result.success = False
-    response = github.orgs.get_on_organization(org=org)
+    response = github.orgs.get_an_organization(org=org)
 
     payload = {
         "name": name,
@@ -37,3 +37,5 @@ def create_org_and_repo(github, org, name, description=None, private=None, has_i
         return result
 
     return "failed to create org"
+
+

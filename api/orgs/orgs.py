@@ -9,7 +9,7 @@ class Orgs(RestClient):
     def __init__(self, api_root_url, **kwargs):
         super(Orgs, self).__init__(api_root_url, **kwargs)
         self.blocking = Blocking(self.api_root_url, **kwargs)
-        self.hooks =Hooks(self.api_root_url, **kwargs)
+        self.hooks = Hooks(self.api_root_url, **kwargs)
         self.member = Members(self.api_root_url, **kwargs)
         self.outside_collaborators = Outside_Collaborators(self.api_root_url, **kwargs)
 
@@ -20,11 +20,12 @@ class Orgs(RestClient):
         """
         return self.delete('/orgs/{}/credential-authorizations/{}'.format(org,credential_id),**kwargs)
 
-    def get_on_organization(self, org, **kwargs):
+    def get_an_organization(self, org, **kwargs):
         """
         https://developer.github.com/v3/orgs/#get-an-organization
         """
-        return self.get('/orgs/{}'.format(org), **kwargs)
+        headers = {'Accept':'application/vnd.github.surtur-preview+json'}
+        return self.get('/orgs/{}'.format(org), headers=headers ,**kwargs)
 
     def list_your_organizations(self, **kwargs):
         """

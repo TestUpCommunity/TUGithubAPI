@@ -1,5 +1,5 @@
 from core.base import CommonItem
-
+import json
 
 def create_repo(github, name, org=None, description=None, homepage=None, private=False, has_issues=True,
                 has_projects=True, has_wiki=True):
@@ -37,3 +37,36 @@ def create_repo(github, name, org=None, description=None, homepage=None, private
     else:
         result.error = "create repo got {},should be 201".format(str(response.status_code))
     return result
+
+
+def delete_repo_from_user_by_name(github, owner, repo):
+    """
+
+    @param github: Github创建出来github对象
+    @param owner: 当前登陆的用户
+    @param repo: 要删除的repo关键字
+
+    """
+    result = CommonItem()
+    result.success = False
+
+    paylod = {'try': 'all'}
+
+    response = github.repos.list_user_repos(username=owner, json=paylod)
+    r = response.json()
+
+    if response.status_code == 200:
+
+        response = github.repos.delete_a_repo(owner=owner, repo=repo)
+
+        if response.status_code == 204:
+            result.success = True
+        else:
+            result.error = "create repo got {},should be 201".format(str(response.status_code))
+
+        return result
+
+    return '列出repos失败'
+
+
+
