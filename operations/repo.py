@@ -1,5 +1,4 @@
 from core.base import CommonItem
-import json
 
 
 def create_repo(github, name, org=None, description=None, homepage=None, private=False, has_issues=True,

@@ -4,7 +4,6 @@ from api.checks.checks import Checks
 from api.interactions.interactions import Interactions
 from api.apps.apps import Apps
 from api.orgs.orgs import Orgs
-from operations.orgs import create_org_and_repo
 from operations.repo import delete_repo_from_user_by_name
 
 
