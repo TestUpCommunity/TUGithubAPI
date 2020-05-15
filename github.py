@@ -18,11 +18,10 @@ class Github():
         self.orgs = Orgs(self.api_root_url, **kwargs)
 
 
-
 if __name__ == '__main__':
     g = Github(username="namelaowang", password ="ghl6032069")
 
-    print(delete_repo_from_user_by_name(g, 'namelaowang', 'repos'))
-
-
+    r = g.repos.branches.add_required_status_checks_contexts_of_protected_branch('namelaowang', 'TestapiTest', 'master')
+    print(r)
+    print(r.content)
 

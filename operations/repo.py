@@ -52,9 +52,9 @@ def delete_repo_from_user_by_name(github, owner, repo):
     result = CommonItem()
     result.success = False
 
-    paylod = {'try': 'all'}
+    payload = {'try': 'all'}
     # 列出当前用户的所有repos
-    response = github.repos.list_user_repos(username=owner, json=paylod)
+    response = github.repos.list_user_repos(username=owner, json=payload)
     if response.status_code == 200:
 
         r = response.json()
@@ -77,10 +77,34 @@ def delete_repo_from_user_by_name(github, owner, repo):
 
         return result
 
-    return ['list the repos fail','https://developer.github.com/v3/repos/#list-user-repositories']
+    return ['list the repos fail',  'https://developer.github.com/v3/repos/#list-user-repositories']
 
 
-def
+def create_repo_and_branch_with_helloword(github, owner, name, branch,  description=None, homepage=None, private=False,
+                                          has_issues=True, has_projects=True, has_wiki=True):
+
+    payload = {
+        "name": name,
+        "description": description,
+        "homepage": homepage,
+        "private": private,
+        "has_issues": has_issues,
+        "has_projects": has_projects,
+        "has_wiki": has_wiki
+    }
+    # 创建仓库
+    response_repos = github.repos.create_user_repo(json =payload)
+    if response_repos.status_code == 201:
+        # 创建分支
+        response_branch = github.repos.branches.add_required_status_checks_contexts_of_protected_branch(
+            owner=owner, repo=name, branch=branch)
+        if response_branch == 200:
+            # 上传文件
+            pass
+
+        return "创建分支失败"
+
+    return "创建仓库失败"
 
 
 
