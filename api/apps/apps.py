@@ -19,6 +19,3 @@ class Apps(RestClient):
         """
         headers = {'Accept': 'application/vnd.github.machine-man-preview+json'}
         return self.get("/users/{}/installation".format(username), headers=headers, **kwargs)
-
-    def pa(self):
-        pass
