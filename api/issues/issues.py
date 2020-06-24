@@ -1,7 +1,12 @@
 from core.rest_client import RestClient
+from api.issues.events import Events
 
 
 class Issues(RestClient):
+
+    def __init__(self, api_root_url, **kwargs):
+        super(Issues, self).__init__(api_root_url, **kwargs)
+        self.event = Events(self.api_root_url, **kwargs)
 
     def create_issue(self, owner, repo, **kwargs):
         """
