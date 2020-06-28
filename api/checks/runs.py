@@ -36,14 +36,14 @@ class Runs(RestClient):
         https://developer.github.com/v3/checks/runs/#get-a-check-run
         """
         headers = {'Accept': 'application/vnd.github.antiope-preview+json'}
-        return self.get('/repos/:owner/:repo/check-runs/:check_run_id'.format(owner, repo, check_run_id), headers = headers, **kwargs)
+        return self.get('/repos/{}/{}/check-runs/{}'.format(owner, repo, check_run_id), headers = headers, **kwargs)
 
     def list_annotations_for_a_check_run(self, owner, repo, check_run_id, **kwargs):
         """
         https://developer.github.com/v3/checks/runs/#list-check-run-annotations
         """
         headers = {'Accept': 'application/vnd.github.antiope-preview+json'}
-        return self.get('/repos/:owner/:repo/check-runs/:check_run_id/annotations'.format(owner, repo, check_run_id), headers = headers, **kwargs)
-    
+        return self.get('/repos/{}/{}/check-runs/{}/annotations'.format(owner, repo, check_run_id), headers = headers, **kwargs)
+
 
 
