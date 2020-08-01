@@ -40,6 +40,12 @@ class Repositories(RestClient):
         headers = {'Accept':'application/vnd.github.nightshade-preview+json'}
         return self.delete('/repos/{}/{}/transfer'.format(owner, repo), headers = headers ,**kwargs)
 
+    def list_teams(self, owner, repo, **kwargs):
+        """
+        https://developer.github.com/v3/repos/#list-teams
+        """
+        return self.get("/repos/{}/{}/teams".format(owner, repo), **kwargs)
+
 
 
 
