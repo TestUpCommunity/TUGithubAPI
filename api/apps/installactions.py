@@ -25,5 +25,12 @@ class Installation(RestClient):
         https://developer.github.com/v3/apps/installations/#add-repository-to-installation
         """
         headers = {'Accept': 'application/vnd.github.machine-man-preview+json'}
-        return self.put("/user/installations/{}/repositories/{}".format(installation_id, repository_id), headers = headers, **kwargs)
+        return self.put("/user/installations/{}/repositories/{}".format(installation_id, repository_id),
+                        headers=headers, **kwargs)
 
+    def create_a_content_attavhment(self, content_reference_id, **kwargs):
+        """
+        https://developer.github.com/v3/apps/installations/#create-a-content-attachment
+        """
+        headers = {'Accept': 'application/vnd.github.corsair-preview+json'}
+        return self.post("/content_references/{}/attachments".format(content_reference_id, headers=headers,**kwargs))
