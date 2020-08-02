@@ -7,4 +7,5 @@ class Reactions(RestClient):
         """
         https://developer.github.com/v3/reactions/#list-reactions-for-a-commit-comment
         """
-        return self.get("/repos/{}/{}/comments/{}/reactions".format(owner, repo, comment_id), **kwargs)
+        headers = {'Accept': "application/vnd.github.squirrel-girl-preview+json"}
+        return self.get("/repos/{}/{}/comments/{}/reactions".format(owner, repo, comment_id), headers=headers, **kwargs)
