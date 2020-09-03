@@ -3,7 +3,7 @@ from api.repositories.repos import Repos
 
 class Github():
     def __init__(self, **kwargs):
-        self.api_root_url = "http://api.github.com"
+        self.api_root_url = "https://api.github.com"
         self.repos = Repos(self.api_root_url, **kwargs)
 
 
