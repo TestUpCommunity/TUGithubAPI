@@ -1,11 +1,10 @@
 from core.rest_client import RestClient
 
-
 class Runs(RestClient):
 
-    def list_check_runs(self, owner, repo, ref, **kwargs):
+    def list_check_runs(self,owner,repo,ref, **kwargs):
         """
-        https://developer.github.com/v3/checks/runs/#list-check-runs-for-a-specific-ref
+        https://docs.github.com/en/rest/reference/checks#list-check-runs-for-a-git-reference
         """
-        headers = {'Accept': 'application/vnd.github.antiope-preview+json'}
-        return self.get("/repos/{}/{}/commits/{}/check-runs".format(owner, repo, ref), headers=headers, **kwargs)
+        return self.get("/repos/{}/{}/commits/{}/check-runs".format(owner,repo,ref), **kwargs)
+
