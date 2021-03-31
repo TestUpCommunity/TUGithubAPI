@@ -6,5 +6,5 @@ class Runs(RestClient):
         """
         https://docs.github.com/en/rest/reference/checks#list-check-runs-for-a-git-reference
         """
-        return self.get("/repos/{}/{}/commits/{}/check-runs".format(owner,repo,ref), **kwargs)
+         return self.get("/repos/{}/{}/commits/{}/check-runs".format(owner,repo,ref), **kwargs)
 

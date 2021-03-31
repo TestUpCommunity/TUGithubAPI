@@ -11,3 +11,4 @@ if __name__ == '__main__':
     # test 2: 在当前用户下创建一个repo，使用一些输入值
     result = create_repo(github, "simpletest03", has_issues=False)
     assert result.success == True, result.error
+
