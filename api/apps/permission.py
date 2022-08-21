@@ -1,0 +1,12 @@
+from core.rest_client import RestClient
+
+
+class Permission(RestClient):
+    def list_ssh_for_current_user(self, **kwargs):
+        """
+        https://docs.github.com/en/rest/users/keys#list-public-ssh-keys-for-the-authenticated-user
+        :param kwargs:
+        :return:
+        """
+        headers = {'Accept': 'application/vnd.github+json'}
+        return self.get("/user/keys", headers=headers, **kwargs)
