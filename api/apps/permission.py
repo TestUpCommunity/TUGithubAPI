@@ -10,3 +10,12 @@ class Permission(RestClient):
         """
         headers = {'Accept': 'application/vnd.github+json'}
         return self.get("/user/keys", headers=headers, **kwargs)
+
+    def create_ssh_for_current_user(self, **kwargs):
+        """
+        https://docs.github.com/en/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user
+        :param kwargs:
+        :return:
+        """
+        headers = {'Accept': 'application/vnd.github+json'}
+        return self.post("/user/keys", headers=headers, **kwargs)
