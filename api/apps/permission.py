@@ -29,3 +29,13 @@ class Permission(RestClient):
         """
         headers = {'Accept': 'application/vnd.github+json'}
         return self.get("/user/keys/{}".format(key_id), headers=headers, **kwargs)
+
+    def delete_a_ssh_for_current_user(self, key_id, **kwargs):
+        """
+        https://docs.github.com/en/rest/users/keys#delete-a-public-ssh-key-for-the-authenticated-user
+        :param key_id: SSH key id
+        :param kwargs:
+        :return:
+        """
+        headers = {'Accept': 'application/vnd.github+json'}
+        return self.delete("/user/keys/{}".format(key_id), headers=headers, **kwargs)
