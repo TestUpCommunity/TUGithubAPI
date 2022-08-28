@@ -2,7 +2,8 @@ from core.rest_client import RestClient
 
 
 class Repos(RestClient):
-    def __init__(self):
+    def __init__(self, api_root_url, **kwargs):
+        super(Repos, self).__init__(api_root_url, **kwargs)
         self.headers = {'Accept': 'application/vnd.github.sombra-preview'}
 
     def get_interaction_restrictions_for_repo(self, owner, **kwargs):

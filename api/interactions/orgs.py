@@ -2,7 +2,8 @@ from core.rest_client import RestClient
 
 
 class Orgs(RestClient):
-    def __init__(self):
+    def __init__(self, api_root_url, **kwargs):
+        super(Orgs, self).__init__(api_root_url, **kwargs)
         self.headers = {'Accept': 'application/vnd.github.sombra-preview'}
 
     def get_interactions_limits_for_org(self, org, **kwargs):

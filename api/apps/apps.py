@@ -1,11 +1,13 @@
 from core.rest_client import RestClient
 from api.apps.installactions import Installation
+from api.apps.permission import Permission
 
 
 class Apps(RestClient):
     def __init__(self, api_root_url, **kwargs):
         super(Apps, self).__init__(api_root_url, **kwargs)
         self.installaction = Installation(self.api_root_url, **kwargs)
+        self.permission = Permission(self.api_root_url, **kwargs)
 
     def create_gitHub_app_from_a_manifest(self, code, **kwargs):
         """
